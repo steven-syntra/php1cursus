@@ -1,6 +1,12 @@
 <?php
 error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
+
+//3 afbeeldingen in een array
+$images = array( "berlin.jpg" => "Berlijn",
+                                "paris.jpg" => "Parijs",
+                                "london_2423609b.jpg" => "Londen" );
+
 ?>
 
 <!DOCTYPE html>
@@ -22,27 +28,30 @@ ini_set( 'display_errors', 1 );
 <div class="container">
     <div class="row">
 
-        <?php
+<?php
 
-            //3 afbeeldingen in een array
-            $images = array( "berlin.jpg" => "Berlijn",
-                                            "paris.jpg" => "Parijs",
-                                            "london_2423609b.jpg" => "Londen" );
+    //loop over de afbeeldingen
+    foreach ( $images as $image => $title )
+    {
+        $link_image = "img/$image";
 
-            //loop over de afbeeldingen
-            foreach ( $images as $image => $title )
-            {
-                $link_image = "img/$image";
+        //de kolom met de titel en de afbeelding erin
+        /*
+        print '<div class="col-sm-4">';
+        print '<h3>' . $title . '</h3>';
+        print '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>';
+        print '<img class="img-fluid" src="' . $link_image . '">';
+        print '</div>' ;
+        */
 
-                //de kolom met de titel en de afbeelding erin
-                print '<div class="col-sm-4">';
-                print '<h3>' . $title . '</h3>';
-                print '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>';
-                print '<img class="img-fluid" src="' . $link_image . '">';
-                print '</div>' ;
-            }
+        print '<div class="col-sm-4">
+                   <h3>' . $title . '</h3>
+                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                   <img class="img-fluid" src="' . $link_image . '">
+                   </div>' ;
+    }
 
-        ?>
+?>
 
     </div>
 </div>

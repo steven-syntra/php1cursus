@@ -23,10 +23,15 @@ function StudentToTable( $student )
     $output = "<h1>Student</h1>";
 
     $output .= "<table>";
+
     foreach( $student as $field => $value )
     {
-        $field = strtoupper(substr($field,0,1)) . substr($field,1);
-        $output .= "<tr><td>$field</td><td>$value</td></tr>";
+        //$field = strtoupper(substr($field,0,1)) . substr($field,1);
+        $field = ucfirst($field);
+        $output .= "<tr>";
+        $output .= "<td>$field</td>";
+        $output .= "<td>$value</td>";
+        $output .= "</tr>";
     }
     $output .= "</table>";
 
