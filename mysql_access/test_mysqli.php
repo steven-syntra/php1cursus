@@ -10,11 +10,13 @@ require_once "connection.php";
 var_dump( $_GET ) ;
 print "<br>";
 
+
 //validate GET argument
 if ( ! is_numeric($_GET['id']))
 {
     die("Wrong parameter");
 }
+
 
 //define and execute query
 $sql = "select * from team where tea_id=" . $_GET['id'] ;

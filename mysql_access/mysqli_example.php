@@ -22,7 +22,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0)
 {
     // output data of each row
-    while($row = $result->fetch_assoc())
+    while( $row = $result->fetch_all(MYSQLI_ASSOC) )
     {
         echo $row["img_id"] . "<br>";
         echo $row["img_filename"] . "<br>";
