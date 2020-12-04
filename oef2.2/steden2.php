@@ -21,16 +21,8 @@ PrintJumbo();
     $template = file_get_contents("templates/column.html");
 
     //merge
-    foreach ( $rows as $row )
-    {
-        $output = $template;
-
-        foreach( array_keys($row) as $field )
-        {
-            $output = str_replace( "@$field@", $row["$field"], $output );
-        }
-        print $output;
-    }
+    $html = MergeViewWithData( $template, $rows );
+    print $html;
 ?>
 
     </div>
