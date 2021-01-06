@@ -34,11 +34,11 @@ function MergeViewWithData( $template, $data )
     return $returnvalue;
 }
 
-function MergeViewWithExtraElements( $template, $selects )
+function MergeViewWithExtraElements( $template, $elements )
 {
-    foreach ( $selects as $key => $select )
+    foreach ( $elements as $key => $element )
     {
-        $template = str_replace( "@$key@", $select, $template );
+        $template = str_replace( "@$key@", $element, $template );
     }
     return $template;
 }

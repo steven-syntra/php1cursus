@@ -10,6 +10,8 @@ function CompareWithDatabase( $table, $pkey ): void
     {
         //haal veldnaam en veldtype uit de databank
         $fieldname = $row['Field']; //bv. img_title
+        $can_be_null = $row['Null']; //bv. NO / YES
+
         list( $type, $length, $precision ) = GetFieldType( $row['Type'] );
 
         //zit het veld in $_POST?
@@ -98,7 +100,7 @@ function GetFieldType( $definition )
         {
             list( $length, $precision ) = explode( ",", $between_brackets);
         }
-        else $length = (int) $between_brackets;
+        else $length = (int) $between_brackets; //cast int type
     }
     //geen haakje
     else $type = $definition;

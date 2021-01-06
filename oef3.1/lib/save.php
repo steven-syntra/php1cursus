@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once "pdo.php";
 
 SaveFormData();
@@ -7,7 +9,7 @@ function SaveFormData()
 {
     if ( $_SERVER['REQUEST_METHOD'] == "POST" )
     {
-        var_dump($_POST);
+        //var_dump($_POST);
         $table = $pkey = $update = $insert = $where = $str_keys_values = "";
 
         if ( ! key_exists("table", $_POST)) die("Missing table");
@@ -42,7 +44,7 @@ function SaveFormData()
             $keys_values[] = " $field = '$value' " ;
         }
 
-        $str_keys_values = implode(" , ", $keys_values );
+        $str_keys_values = implode(" , ", $keys_values ); // img_title='berlin.jpg' , img_width='456' , ...
 
         //extend SQL with key-values
         $sql .= $str_keys_values;
@@ -51,6 +53,7 @@ function SaveFormData()
         $sql .= $where;
 
         //run SQL
+        $_SESSION['last_sql'] = $sql;
         $result = ExecuteSQL( $sql );
 
         //output if not redirected
@@ -59,9 +62,8 @@ function SaveFormData()
         print $result->rowCount() . " records affected";
 
         //redirect after insert or update
-        /*
         if ( $insert AND $_POST["afterinsert"] > "" ) header("Location: ../" . $_POST["afterinsert"] );
         if ( $update AND $_POST["afterupdate"] > "" ) header("Location: ../" . $_POST["afterupdate"] );
-        */
+
     }
 }

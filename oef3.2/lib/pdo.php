@@ -28,7 +28,10 @@ function GetData( $sql )
     //show result (if there is any)
     if ( $result->rowCount() > 0 )
     {
-        $rows = $result->fetchAll(PDO::FETCH_BOTH);
+        //$rows = $result->fetchAll(PDO::FETCH_ASSOC); //geeft array zoals ['lan_id'] => 1, ...
+        //$rows = $result->fetchAll(PDO::FETCH_NUM); //geeft array zoals [0] => 1, ...
+        $rows = $result->fetchAll(PDO::FETCH_BOTH); //geeft array zoals [0] => 1, ['lan_id'] => 1, ...
+        //var_dump($rows);
         return $rows;
     }
     else

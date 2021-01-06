@@ -30,6 +30,7 @@ function SaveFormData()
         $sending_form_uri = $_SERVER['HTTP_REFERER'];
         CompareWithDatabase( $table, $pkey );
 
+        //terugkeren naar afzender als er een fout is
         if ( count($_SESSION['errors']) > 0 ) { header( "Location: " . $sending_form_uri ); exit(); }
 
         //insert or update?
