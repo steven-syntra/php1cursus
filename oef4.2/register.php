@@ -13,6 +13,7 @@ PrintJumbo( $title = "Registreer", $subtitle = "" );
 
         <?php
             //get data
+
             if ( count($old_post) > 0 )
             {
                 $data = [ 0 => [

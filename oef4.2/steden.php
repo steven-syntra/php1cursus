@@ -20,7 +20,6 @@ PrintNavbar();
         print '<div class="msgs">' . $msg . '</div>';
     }
 
-
     //get data
     $data = GetData( "select * from images" );
 

@@ -72,15 +72,9 @@ function SaveFormData()
             if ( $field == "usr_password" ) //encrypt usr_password
             {
                 $value = password_hash( $value, PASSWORD_BCRYPT );
-                $keys_values[] = " $field = '$value' " ;
-
-                $_SESSION['msgs'][] = "Bedankt voor uw registratie";
-            }
-            else //all other data-fields
-            {
-                $keys_values[] = " $field = '$value' " ;
             }
 
+            $keys_values[] = " $field = '$value' " ;
         }
 
         $str_keys_values = implode(" , ", $keys_values );
@@ -93,6 +87,11 @@ function SaveFormData()
 
         //run SQL
         $result = ExecuteSQL( $sql );
+
+        if ( $result AND $table == "user" )
+        {
+            $_SESSION['msgs'][] = "Bedankt voor uw registratie";
+        }
 
         //output if not redirected
         print $sql ;
