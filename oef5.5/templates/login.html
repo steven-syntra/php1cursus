@@ -1,0 +1,38 @@
+<div class="col-sm-2"></div>
+
+<form class="frmLogin" id="mainform" name="mainform" method="POST" action="lib/login_check.php">
+
+    <!--security-->
+    <input type="hidden" name="csrf" value="@csrf_token@">
+    <!--end security-->
+
+    <div class="form-group row">
+        <label for="usr_email" class="col-sm-4 col-form-label">E-mail</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control-plaintext" id="usr_email" name="usr_email">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="usr_password" class="col-sm-4 col-form-label">Wachtwoord</label>
+        <div class="col-sm-6">
+            <input type="password" class="form-control-plaintext" id="usr_password" name="usr_password">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label"></label>
+        <div class="col-sm-6">
+            <input class="btn btn-success" type="submit" value="Login">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="usr_password" class="col-sm-4 col-form-label"></label>
+        <div class="col-sm-6">
+            <p>Nog geen login? <a href="register.php">Registreer hier</a></p>
+        </div>
+    </div>
+
+</form>
+

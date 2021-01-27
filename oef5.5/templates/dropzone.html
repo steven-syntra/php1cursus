@@ -1,0 +1,50 @@
+<div class="col-sm-2"></div>
+
+<div class="col-sm-8">
+
+    <h2>Bestanden opladen</h2>
+    <br>
+
+    <form id="mainform" name="mainform">
+
+                <!-- begin essentiële code voor dropzone -->
+                <div id="fileupload" class="dropzone"></div> <!-- een lege div; het id vermeld je in javascript -->
+
+                <script>
+
+                    var myDropzone = new Dropzone(
+                        "div#fileupload",                                       //id van de div die 'omgevormd' wordt tot een dropzone
+                        {
+                            url: "lib/upload_dropzone.php",         //het script dat de upload afhandelt op de server
+                            maxFilesize: 2, // MB
+                            dictDefaultMessage: "Sleep op te laden bestanden hier naartoe, of klik hier om deze bestand(en) te selecteren",
+                            init: function() {
+                                this.on("addedfile", function(file) {
+                                    //alert("Bestand " + file + " opgeladen")
+                                }).on('error', function(file, response){
+                                    alert("Probleem met bestand " + file + " " + response)
+                                })
+                            }
+                        }
+                    );
+
+                </script>
+                <!-- einde essentiële code voor dropzone -->
+
+    </form>
+
+    <br>
+    <br>
+
+    <!-- overzicht reeds opgeladen bestanden -->
+    <h2>Reeds opgeladen</h2>
+    <br>
+
+    @opgeladen_bestanden@
+
+    <!-- einde overzicht reeds opgeladen bestanden -->
+
+</div>
+
+<div class="col-sm-2"></div>
+
