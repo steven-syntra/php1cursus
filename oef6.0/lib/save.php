@@ -16,7 +16,8 @@ function SaveFormData()
     {
         if ( ! isset( $_POST['btnOpslaan'] ) )
         {
-            GoHome(); exit;
+            if ( isset($_POST['aftercancel'] )) { GoToPage($_POST['aftercancel']); exit; }
+            else { GoHome(); exit; }
         }
 
         //controle CSRF token
@@ -56,7 +57,7 @@ function SaveFormData()
         }
 
         //terugkeren naar afzender als er een fout is
-        if ( count($_SESSION['errors']) > 0 )
+        if ( isset($_SESSION['errors']) AND count($_SESSION['errors']) > 0 )
         {
             $_SESSION['OLD_POST'] = $_POST;
             header( "Location: " . $sending_form_uri ); exit();
@@ -75,7 +76,8 @@ function SaveFormData()
         foreach ( $_POST as $field => $value )
         {
             //skip non-data fields
-            if ( in_array( $field, [ 'btnOpslaan', 'formname', 'table', 'pkey', 'afterinsert', 'afterupdate', 'csrf' ] ) ) continue;
+            if ( in_array( $field, [ 'btnOpslaan', 'formname', 'table', 'pkey',
+                                                'afterinsert', 'afterupdate', 'aftercancel', 'csrf' ] ) ) continue;
 
             //handle primary key field
             if ( $field == $pkey )

@@ -8,6 +8,7 @@ PrintHead();
 PrintJumbo( $title = "Leuke plekken in Europa" ,
                         $subtitle = "Tips voor citytrips voor vrolijke vakantiegangers!" );
 PrintNavbar();
+PrintMessages();
 ?>
 
 <div class="container">

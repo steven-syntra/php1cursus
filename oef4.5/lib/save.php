@@ -1,8 +1,11 @@
 <?php
 error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
+
+$public_access=true;
 require_once "autoload.php";
 
+///die("hallo");
 SaveFormData();
 
 function SaveFormData()
@@ -20,6 +23,7 @@ function SaveFormData()
         $_POST = ConvertSpecialChars($_POST);
 
         $table = $pkey = $update = $insert = $where = $str_keys_values = "";
+
 
         //get important metadata
         if ( ! key_exists("table", $_POST)) die("Missing table");
